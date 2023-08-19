@@ -1,4 +1,4 @@
-// Initialize GSAP animations for team members
+
 const teamMembers = document.querySelectorAll(".team-member");
 
 teamMembers.forEach((member, index) => {
