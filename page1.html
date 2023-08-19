@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Money Management for Teens (INR)</title>
+    <link rel="stylesheet" href="getStartedStyle.css">
+    <link rel="icon" href="Images/logo2.jpeg" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .savings-box {
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Monthly Money Management for Teens (INR)</h2>
+        <label for="totalAmount">Total Amount (INR):</label>
+        <input type="number" id="totalAmount" placeholder="Enter total amount">
+        <label for="savingsPercentage">Savings Percentage (%):</label>
+        <input type="number" id="savingsPercentage" placeholder="Enter savings percentage" min="0" max="100">
+        <button onclick="generateTable()">Generate Table</button>
+        <div class="savings-box" id="savingsBox"></div>
+        <div id="tableContainer"></div>
+    </div>
+    <p> <a href="http://127.0.0.1:5500/addingexpense.html">Add Your weekly expenses here</a> </p>
+
+    <script>
+        function generateTable() {
+            const totalAmount = parseFloat(document.getElementById('totalAmount').value);
+            if (isNaN(totalAmount) || totalAmount <= 0) {
+                alert('Please enter a valid total amount.');
+                return;
+            }
+
+            const savingsPercentage = parseFloat(document.getElementById('savingsPercentage').value);
+            if (isNaN(savingsPercentage) || savingsPercentage < 0 || savingsPercentage > 100) {
+                alert('Please enter a valid savings percentage between 0 and 100.');
+                return;
+            }
+
+            const savings = (totalAmount * savingsPercentage) / 100;
+            const remainingAmount = totalAmount - savings;
+            const weeklyAmount = remainingAmount / 4;
+
+            const savingsBox = document.getElementById('savingsBox');
+            savingsBox.innerHTML = `Total Savings: &#8377;${savings.toFixed(2)}`;
+            
+
+            const tableContainer = document.getElementById('tableContainer');
+            tableContainer.innerHTML = '';
+
+            const weeks = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
+
+            const table = document.createElement('table');
+            const headerRow = table.insertRow();
+            headerRow.innerHTML = `
+                <th>Week</th>
+                <th>Equally Divided Amount (INR)</th>
+                <th>Actual expense</th>
+                <th>weekly saved</th>
+            `;
+            
+
+            for (let i = 0; i < weeks.length; i++) {
+                const row = table.insertRow();
+                
+                row.innerHTML = `
+                    <td>${weeks[i]}</td>
+                    <td>&#8377;${weeklyAmount.toFixed(2)}</td>
+                   <td> </td>
+                
+                    
+                `;
+                
+            }
+            tableContainer.appendChild(table);
+        }
+      
+
+    </script>
+</body>
+
+</html>
