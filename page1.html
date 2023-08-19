@@ -23,7 +23,7 @@
         }
 
         .savings-box {
-            background-color: #f0f0f0;
+            background-color: #020b15;
             padding: 10px;
             text-align: center;
             margin-top: 10px;
@@ -89,8 +89,7 @@
             headerRow.innerHTML = `
                 <th>Week</th>
                 <th>Equally Divided Amount (INR)</th>
-                <th>Actual expense</th>
-                <th>weekly saved</th>
+                
             `;
             
 
@@ -100,9 +99,7 @@
                 row.innerHTML = `
                     <td>${weeks[i]}</td>
                     <td>&#8377;${weeklyAmount.toFixed(2)}</td>
-                   <td> </td>
-                
-                    
+                  
                 `;
                 
             }
