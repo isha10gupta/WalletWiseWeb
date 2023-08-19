@@ -66,8 +66,6 @@ body {
 .dark-mode-toggle input:checked + label:before {
     transform: translateX(14px);
 }
-
-/* Dark mode styles */
 body.dark-mode {
     background-color: #333;
     color: #fff;
